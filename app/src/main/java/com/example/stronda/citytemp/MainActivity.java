@@ -35,16 +35,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Cidade cidade = cidadeList.get(position);
-                //Toast.makeText(getApplicationContext(),cidade.getNome() + " ", Toast.LENGTH_LONG).show();
+                Cidade cidade = cidadeList.get(position);
+
                 Intent intent = new Intent(getApplicationContext(), CidadesActivity.class);
+                intent.putExtra("id", cidade.getId());
                 startActivity(intent);
             }
 
             @Override
             public void onLongClick(View view, int position) {
                 Cidade cidade = cidadeList.get(position);
-                Toast.makeText(getApplicationContext(),cidade.getNome() + " ", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),cidade.getNome() + " ", Toast.LENGTH_SHORT).show();
             }
         }));
 
@@ -54,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void inserirDadosLista() {
-        cidade = new Cidade("CURITIBA");
+        cidade = new Cidade("CURITIBA",1);
         cidadeList.add(cidade);
 
-        cidade = new Cidade("SÃO PAULO");
+        cidade = new Cidade("SÃO PAULO",2);
         cidadeList.add(cidade);
 
-        cidade = new Cidade("FLORIANÓPOLIS");
+        cidade = new Cidade("FLORIANÓPOLIS",3);
         cidadeList.add(cidade);
 
 

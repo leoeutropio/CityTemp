@@ -1,5 +1,6 @@
 package com.example.stronda.citytemp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import java.util.Calendar;
 public class CidadesActivity extends AppCompatActivity {
 
     TextView data_tv, cidade_tv, grau_tv, temp_tv  ;
-
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +32,28 @@ public class CidadesActivity extends AppCompatActivity {
         cidade_tv = findViewById(R.id.city_tv);
         temp_tv = findViewById(R.id.temp_tv);
 
-        findWeather();
+        Intent intent = getIntent();
+        Bundle bd = intent.getExtras();
+
+        if(bd != null) {
+             id = (int) bd.get("id");
+             findWeather(id);
+        }
+
+
+
 
     }
 
-    private void findWeather() {
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=Curitiba,BR&appid=ffe1590c1fdd20ca58cab59e461f830c&units=imperial";
+    private void findWeather(int id) {
+
+        if (id == 1){
+            String url = "http://api.openweathermap.org/data/2.5/weather?q=Curitiba,BR&appid=ffe1590c1fdd20ca58cab59e461f830c&units=imperial";
 
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                try{
+                try {
                     JSONObject main_object = response.getJSONObject("main");
                     JSONArray array = response.getJSONArray("weather");
                     JSONObject object = array.getJSONObject(0);
@@ -57,16 +69,16 @@ public class CidadesActivity extends AppCompatActivity {
                     data_tv.setText(formatted_date);
 
                     double temp_int = Double.parseDouble(temp);
-                    double cent = (temp_int - 32)/ 1.8000;
+                    double cent = (temp_int - 32) / 1.8000;
                     cent = Math.round(cent);
                     int aux = (int) cent;
 
                     temp_tv.setText(String.valueOf(aux));
 
 
-                }catch (JSONException e) {
+                } catch (JSONException e) {
 
-                        e.printStackTrace();
+                    e.printStackTrace();
 
                 }
             }
@@ -80,6 +92,104 @@ public class CidadesActivity extends AppCompatActivity {
         );
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jor);
+
+        }
+
+        if (id == 2){
+            String url = "http://api.openweathermap.org/data/2.5/weather?q=Sao Paulo, BR&appid=ffe1590c1fdd20ca58cab59e461f830c&units=imperial";
+
+            JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONObject main_object = response.getJSONObject("main");
+                        JSONArray array = response.getJSONArray("weather");
+                        JSONObject object = array.getJSONObject(0);
+                        String temp = String.valueOf(main_object.getDouble("temp"));
+                        String city = response.getString("name");
+
+                        cidade_tv.setText(city);
+
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat sdf = new SimpleDateFormat("'Data:' dd.MM.yyyy '  Hora:' HH:mm:ss z");
+                        String formatted_date = sdf.format(calendar.getTime());
+
+                        data_tv.setText(formatted_date);
+
+                        double temp_int = Double.parseDouble(temp);
+                        double cent = (temp_int - 32) / 1.8000;
+                        cent = Math.round(cent);
+                        int aux = (int) cent;
+
+                        temp_tv.setText(String.valueOf(aux));
+
+
+                    } catch (JSONException e) {
+
+                        e.printStackTrace();
+
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+
+                }
+            }
+            );
+            RequestQueue queue = Volley.newRequestQueue(this);
+            queue.add(jor);
+
+        }
+
+        if (id == 3){
+            String url = "http://api.openweathermap.org/data/2.5/weather?q=Florianopolis,BR&appid=ffe1590c1fdd20ca58cab59e461f830c&units=imperial";
+
+            JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONObject main_object = response.getJSONObject("main");
+                        JSONArray array = response.getJSONArray("weather");
+                        JSONObject object = array.getJSONObject(0);
+                        String temp = String.valueOf(main_object.getDouble("temp"));
+                        String city = response.getString("name");
+
+                        cidade_tv.setText(city);
+
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat sdf = new SimpleDateFormat("'Data:' dd.MM.yyyy '  Hora:' HH:mm:ss z");
+                        String formatted_date = sdf.format(calendar.getTime());
+
+                        data_tv.setText(formatted_date);
+
+                        double temp_int = Double.parseDouble(temp);
+                        double cent = (temp_int - 32) / 1.8000;
+                        cent = Math.round(cent);
+                        int aux = (int) cent;
+
+                        temp_tv.setText(String.valueOf(aux));
+
+
+                    } catch (JSONException e) {
+
+                        e.printStackTrace();
+
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+
+                }
+            }
+            );
+            RequestQueue queue = Volley.newRequestQueue(this);
+            queue.add(jor);
+
+        }
 
     }
 
