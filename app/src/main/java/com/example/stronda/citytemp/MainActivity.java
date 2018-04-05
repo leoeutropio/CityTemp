@@ -49,12 +49,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
 
-
-        inserirDadosLista();
-
+        insertData();
     }
 
-    private void inserirDadosLista() {
+    private void insertData() {
         cidade = new Cidade("CURITIBA",1);
         cidadeList.add(cidade);
 

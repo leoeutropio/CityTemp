@@ -8,8 +8,31 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
-    android:paddingLeft="10dp"
+    android:paddingLeft="8dp"
     android:background="#496892">
+
+    <TextView
+        android:id="@+id/umidade_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:text="Umidade"
+        android:textSize="20dp"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:layout_marginTop="50dp"/>
+
+
+    <TextView
+        android:id="@+id/vento_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:text="Vento"
+        android:textSize="20dp"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:id="@+id/date_tv"
@@ -19,7 +42,42 @@
         android:textSize="20dp"
         android:textColor="#000000"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:textAllCaps="true"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/previsao_cv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:src="@drawable/clear_day" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/humidity"
+        android:layout_marginTop="45dp"
+        android:layout_alignParentLeft="true"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/wind"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/descricao_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Tempo"
+        android:layout_marginTop="280dp"
+        android:textColor="#000000"
+        android:textAllCaps="true"/>
 
     <TextView
         android:id="@+id/city_tv"
@@ -30,7 +88,7 @@
         android:textColor="#000000"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="125dp"
-
+        android:textAllCaps="true"
         />
 
     <TextView
@@ -41,7 +99,7 @@
         android:textSize="100dp"
         android:textColor="#000000"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="350dp"
         />
 
     <TextView
@@ -54,7 +112,6 @@
         android:text="C"
         android:textColor="#000000"
         android:textSize="25dp" />
-
 
 
 </RelativeLayout>
