@@ -128,25 +128,23 @@ public class CidadesActivity extends AppCompatActivity {
                     int hora = Integer.parseInt(sdf2.format(calendar.getTime()).toString());
 
 
-
-
-                    if(description.equals("Clear") && hora <=5000 || hora>=1800){
+                    if(description.equals("Clear") && (hora <=0500 || hora>=1800)){
                         previsao_cv.setImageResource(R.drawable.clear_night);
                     }
-                    else if (description.equals("Clouds") && hora <=5000 || hora>=1800){
+                    else if (description.equals("Clouds") && (hora <=0500 || hora>=1800)){
                         previsao_cv.setImageResource(R.drawable.cloud_night);
                     }
-                    else if (description.equals("Rain") && hora <=5000 || hora>=1800){
+                    else if (description.equals("Rain") && (hora <=0500 || hora>=1800)){
                         previsao_cv.setImageResource(R.drawable.rain_night);
                     }
 
-                    else if(description.equals("Clear") && hora >5000 || hora<1800){
+                    else if(description.equals("Clear") && (hora >0500 || hora<1800)){
                         previsao_cv.setImageResource(R.drawable.clear_day);
                     }
-                    else if(description.equals("Clouds") && hora >5000 || hora<1800){
-                        previsao_cv.setImageResource(R.drawable.cloud_night);
+                    else if(description.equals("Clouds") && (hora >0500 || hora<1800)){
+                        previsao_cv.setImageResource(R.drawable.cloud_day);
                     }
-                    else if(description.equals("Rain") && hora >5000 || hora<1800){
+                    else if(description.equals("Rain") && (hora >0500 || hora<1800)){
                         previsao_cv.setImageResource(R.drawable.rain_day);
                     }
 
@@ -170,7 +168,7 @@ public class CidadesActivity extends AppCompatActivity {
         }
 
         if (id == 2){
-            String url = "http://api.openweathermap.org/data/2.5/weather?q=Sao Paulo, BR&appid=ffe1590c1fdd20ca58cab59e461f830c";
+            String url = "http://api.openweathermap.org/data/2.5/weather?q=Sao Paulo,BR&appid=ffe1590c1fdd20ca58cab59e461f830c";
 
             JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
@@ -208,16 +206,28 @@ public class CidadesActivity extends AppCompatActivity {
                         umidade_tv.setText(umidade + "%");
 
 
-                        if(description.equals("Clear")){
+                        SimpleDateFormat sdf2 = new SimpleDateFormat("HHmm");
+                        int hora = Integer.parseInt(sdf2.format(calendar.getTime()).toString());
+
+                        if(description.equals("Clear") && (hora <=0500 || hora>=1800)){
                             previsao_cv.setImageResource(R.drawable.clear_night);
                         }
-                        else if (description.equals("Clouds")){
+                        else if (description.equals("Clouds") && (hora <=0500 || hora>=1800)){
                             previsao_cv.setImageResource(R.drawable.cloud_night);
                         }
-                        else if (description.equals("Rain")){
+                        else if (description.equals("Rain") && (hora <=0500 || hora>=1800)){
                             previsao_cv.setImageResource(R.drawable.rain_night);
                         }
 
+                        else if(description.equals("Clear") && (hora >0500 || hora<1800)){
+                            previsao_cv.setImageResource(R.drawable.clear_day);
+                        }
+                        else if(description.equals("Clouds") && (hora >0500 || hora<1800)){
+                            previsao_cv.setImageResource(R.drawable.cloud_day);
+                        }
+                        else if(description.equals("Rain") && (hora >0500 || hora<1800)){
+                            previsao_cv.setImageResource(R.drawable.rain_day);
+                        }
 
                     } catch (JSONException e) {
 
@@ -277,17 +287,28 @@ public class CidadesActivity extends AppCompatActivity {
                         vento_tv.setText(vento +" m/s");
                         umidade_tv.setText(umidade + "%");
 
+                        SimpleDateFormat sdf2 = new SimpleDateFormat("HHmm");
+                        int hora = Integer.parseInt(sdf2.format(calendar.getTime()).toString());
 
-                        if(description.equals("Clear")){
+                        if(description.equals("Clear") && (hora <=0500 || hora>=1800)){
                             previsao_cv.setImageResource(R.drawable.clear_night);
                         }
-                        else if (description.equals("Clouds")){
+                        else if (description.equals("Clouds") && (hora <=0500 || hora>=1800)){
                             previsao_cv.setImageResource(R.drawable.cloud_night);
                         }
-                        else if (description.equals("Rain")){
+                        else if (description.equals("Rain") && (hora <=0500 || hora>=1800)){
                             previsao_cv.setImageResource(R.drawable.rain_night);
                         }
 
+                        else if(description.equals("Clear") && (hora >0500 || hora<1800)){
+                            previsao_cv.setImageResource(R.drawable.clear_day);
+                        }
+                        else if(description.equals("Clouds") && (hora >0500 || hora<1800)){
+                            previsao_cv.setImageResource(R.drawable.cloud_day);
+                        }
+                        else if(description.equals("Rain") && (hora >0500 || hora<1800)){
+                            previsao_cv.setImageResource(R.drawable.rain_day);
+                        }
 
                     } catch (JSONException e) {
 

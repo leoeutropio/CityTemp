@@ -37,9 +37,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Cidade cidade = cidadeList.get(position);
 
-                Intent intent = new Intent(getApplicationContext(), CidadesActivity.class);
-                intent.putExtra("id", cidade.getId());
-                startActivity(intent);
+                /*if (cidade.getId()==4){
+                    Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                    startActivity(intent);
+                }*/
+                    Intent intent = new Intent(getApplicationContext(), CidadesActivity.class);
+                    intent.putExtra("id", cidade.getId());
+                    startActivity(intent);
             }
 
             @Override
@@ -62,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         cidade = new Cidade("FLORIANÓPOLIS",3);
         cidadeList.add(cidade);
 
+        cidade = new Cidade("Maps",4);
+        cidadeList.add(cidade);
 
         mAdapter.notifyDataSetChanged();
 
